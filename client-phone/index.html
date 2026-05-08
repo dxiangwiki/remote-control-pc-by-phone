@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<body>
+  <h1>手机遥控器</h1>
+  <button onclick="send('next')">下一页</button>
+  <button onclick="send('prev')">上一页</button>
+  <button onclick="send('home')">首页</button>
+
+  <script>
+    async function send(action) {
+      await fetch('http://192.168.43.200:3000/set-command', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ action, page: 1 })
+      });
+    }
+  </script>
+</body>
+</html>
